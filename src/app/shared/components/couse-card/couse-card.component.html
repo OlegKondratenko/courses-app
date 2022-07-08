@@ -1,0 +1,12 @@
+<div class="course-card" *ngIf="item">
+  <div class="course-card__info">
+    <h2 class="course-card__header">{{ item.title }}</h2>
+    <p class="course-card__description">{{ item.description }}</p>
+  </div>
+  <div class="course-card__right">
+    <p class="course-card__authors">Authors: {{ item.authors }}</p>
+    <p class="course-card__duration">Duration: {{ item.duration }}</p>
+    <p class="course-card__created">Created: {{ item.creationDate }}</p>
+    <ng-content controls></ng-content>
+  </div>
+</div>

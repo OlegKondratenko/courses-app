@@ -1,0 +1,9 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+.btn--show-modal {
+  width: fit-content;
+  align-self: center;
+}

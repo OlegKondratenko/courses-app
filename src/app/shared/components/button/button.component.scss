@@ -1,0 +1,23 @@
+:host {
+  display: inline-block;
+  border: 1px solid purple;
+  padding: 5px 10px;
+  transition: background-color 0.5s ease;
+  cursor: pointer;
+  text-align: center;
+  margin-right: 10px;
+  &:last-child {
+    margin-right: 0;
+  }
+
+  &:hover {
+    background: purple;
+  }
+  &:active {
+    background: darkred;
+  }
+
+  &:focus {
+    background: darkgreen;
+  }
+}

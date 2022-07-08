@@ -1,0 +1,11 @@
+<ng-container *ngIf="list">
+  <ng-container *ngFor="let item of list">
+    <app-couse-card [item]="item">
+      <div controls class="list__controls">
+        <app-button [text]="'Show course'"></app-button>
+        <app-button [icon]="faPen" *ngIf="isEditable"></app-button>
+        <app-button [icon]="faTrashCan" *ngIf="isEditable"></app-button>
+      </div>
+    </app-couse-card>
+  </ng-container>
+</ng-container>

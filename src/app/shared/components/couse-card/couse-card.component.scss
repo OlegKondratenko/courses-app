@@ -1,0 +1,27 @@
+.course-card {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid green;
+  margin: 15px;
+  padding: 10px;
+  transition: background-color 0.2s ease;
+  &:hover {
+    background: lightgrey;
+  }
+  > div {
+    margin: 0 10px;
+  }
+  &__right {
+    display: flex;
+    flex-direction: column;
+    p {
+      display: flex;
+      flex-wrap: nowrap;
+      white-space: nowrap;
+    }
+  }
+}
+h2 {
+  padding: 0;
+  margin: 0;
+}

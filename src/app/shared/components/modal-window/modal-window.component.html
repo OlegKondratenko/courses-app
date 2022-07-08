@@ -1,0 +1,23 @@
+<div class="modal-window" *ngIf="isOpen">
+  <h2 class="modal-window__title">{{ title }}</h2>
+  <p class="modal-window__message">{{ message }}</p>
+  <fa-icon
+    class="btn btn--cross"
+    [icon]="faCancel"
+    *ngIf="faCancel"
+    (click)="close()"
+  ></fa-icon>
+  <div class="modal-window__actions">
+    <app-button
+      class="btn btn--ok"
+      [text]="'OK'"
+      (click)="close()"
+    ></app-button>
+    <app-button
+      class="btn btn--cancel"
+      [text]="'Cancel'"
+      (click)="close()"
+    ></app-button>
+  </div>
+</div>
+<div class="modal-window__bg" *ngIf="isOpen" (click)="close()"></div>
