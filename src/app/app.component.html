@@ -2,19 +2,4 @@
   <p name>Oleh</p>
   <app-button quit [text]="'LogOut'" class="button"></app-button>
 </app-header>
-<app-courses-list [list]="couseList" [isEditable]="true"></app-courses-list>
-<app-modal-window
-  id="custom-modal-1"
-  [title]="'Title'"
-  [message]="
-    'Lorem ipsum dolor sit amet
-     consectetur adipisicing elit.
-      Distinctio nihil esse, eum repellendus dolor neque?'
-  "
-></app-modal-window>
-<app-button
-class="btn btn--show-modal"
-  id="custom-modal-1"
-  [text]="'Show Modal'"
-  (click)="openModal('custom-modal-1')"
-></app-button>
+<router-outlet></router-outlet>

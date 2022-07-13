@@ -1,1 +1,85 @@
-<p>course works!</p>
+<form [formGroup]="courseForm" class="form form--courses">
+  <label for="title" class="form__label">Title:</label>
+  <div class="form__field-wrapper">
+    <input id="title" type="text" formControlName="title" class="form__input" />
+    <div *ngIf="title?.errors?.['required']" class="alert">
+      Title is required.
+    </div>
+  </div>
+  <app-button
+    [type]="'submit'"
+    [text]="'Create Course'"
+    (click)="createCourse()"
+    >Create Course</app-button
+  >
+  <label for="description" class="form__label">Description:</label>
+  <div class="form__field-wrapper">
+    <input
+      id="description"
+      type="text"
+      formControlName="description"
+      class="form__input form__input--description"
+    />
+    <div *ngIf="description?.errors?.['required']" class="alert">
+      Description is required.
+    </div>
+  </div>
+  <div class="form__authors">
+    <div class="form__authors-name" formGroupName="newAuthor">
+      <h2>add Authors</h2>
+      <label for="name" class="form__label">Author name:</label>
+      <div class="form__field-wrapper">
+        <input
+          id="name"
+          type="text"
+          formControlName="name"
+          class="form__input"
+        />
+        <div *ngIf="name?.errors?.['required']" class="alert">
+          Name is required.
+        </div>
+        <div *ngIf="name?.errors?.['pattern']" class="alert">
+          Author name should be alphanumeric
+        </div>
+      </div>
+      <app-button
+        [text]="'Create Author'"
+        [type]="'button'"
+        (click)="addAuthor()"
+      ></app-button>
+    </div>
+
+    <div formArrayName="authors" class="form__authors-list">
+      <h2>Author List</h2>
+      <div
+        *ngFor="let author of authors.controls; index as i"
+        class="form__author-item"
+      >
+        <span>{{ author.value }}</span>
+        <app-button
+          [text]="'Delete Author'"
+          (click)="deleteAuthor(i)"
+        ></app-button>
+      </div>
+    </div>
+
+    <div class="form_authors-duration">
+      <label for="duration" class="form__label">Duration:</label>
+      <div class="form__field-wrapper">
+        <input
+          id="duration"
+          type="text"
+          formControlName="duration"
+          class="form__input"
+        />
+        <div *ngIf="duration?.errors?.['required']" class="alert">
+          Duration is required.
+        </div>
+        <div *ngIf="duration?.errors?.['min']" class="alert">
+            Should be positive.
+          </div>
+        <span>{{ duration?.value | creationDate }}</span>
+      </div>
+    </div>
+  </div>
+</form>
