@@ -1,13 +1,31 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CoursesComponent } from './features/courses/courses/courses.component';
-import { LoginComponent } from './features/login/login/login.component';
-import { RegistrationComponent } from './features/registration/registration/registration.component';
+import { AuthorizedGuard } from './auth/guards/authorized.guard';
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegistrationComponent },
-  { path: 'courses', component: CoursesComponent },
+  {
+    path: 'login',
+    loadChildren: () =>
+      import('./features/login/login.module').then((m) => m.LoginModule),
+  },
+  {
+    path: 'register',
+    loadChildren: () =>
+      import('./features/registration/registration.module').then(
+        (m) => m.RegistrationModule
+      ),
+  },
+  {
+    path: 'courses',
+    loadChildren: () =>
+      import('./features/courses/courses.module').then((m) => m.CoursesModule),
+    // canLoad: [AuthorizedGuard],
+  },
+  {
+    path: '',
+    redirectTo: '',
+    pathMatch: 'full',
+  },
 ];
 
 @NgModule({

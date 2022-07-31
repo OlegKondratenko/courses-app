@@ -4,7 +4,10 @@
     <p class="course-card__description">{{ item.description }}</p>
   </div>
   <div class="course-card__right">
-    <p class="course-card__authors">Authors: {{ item.authors }}</p>
+    <p class="course-card__authors">
+      Authors:
+      <span *ngFor="let author of authors">{{ author.name }} </span>
+    </p>
     <p class="course-card__duration">Duration: {{ item.duration }}</p>
     <p class="course-card__created">Created: {{ item.creationDate }}</p>
     <ng-content controls></ng-content>

@@ -13,7 +13,11 @@ import { faCoffee, faEye } from '@fortawesome/free-solid-svg-icons';
 import { RegistrationModule } from './features/registration/registration.module';
 import { CoursesModule } from './features/courses/courses.module';
 import { CourseModule } from './features/course/course.module';
-
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from './auth/interceptors/token.interceptor';
+import { effects, reducers } from './store';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -25,8 +29,14 @@ import { CourseModule } from './features/course/course.module';
     RegistrationModule,
     CoursesModule,
     CourseModule,
+    HttpClientModule,
+    StoreModule.forRoot(reducers),
+    EffectsModule.forRoot(effects),
   ],
-  providers: [],
+  providers: [
+    { provide: 'Window', useValue: window },
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {
