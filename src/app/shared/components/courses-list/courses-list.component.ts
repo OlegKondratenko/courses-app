@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { faPen, faTrashCan } from '@fortawesome/free-solid-svg-icons';
-import { CourseCard } from 'src/app/models';
+import { Observable } from 'rxjs';
+import { CourseInterface } from 'src/app/models';
 
 @Component({
   selector: 'app-courses-list',
@@ -8,7 +9,7 @@ import { CourseCard } from 'src/app/models';
   styleUrls: ['./courses-list.component.scss'],
 })
 export class CoursesListComponent implements OnInit {
-  @Input() list?: CourseCard[];
+  @Input() list$?: Observable<CourseInterface[]>;
   @Input() isEditable: boolean = false;
   @Output() cardAction = new EventEmitter<string>();
   faPen = faPen;

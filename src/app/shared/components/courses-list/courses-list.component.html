@@ -1,4 +1,4 @@
-<ng-container *ngIf="list">
+<ng-container *ngIf="list$ | async as list">
   <ng-container *ngFor="let item of list">
     <app-couse-card [item]="item">
       <div controls class="list__controls">
