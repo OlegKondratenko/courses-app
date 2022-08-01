@@ -1,1 +1,48 @@
-<p>login works!</p>
+<form action="" class="form form--login">
+  <h2 class="form__heading">login</h2>
+  <label for="email" class="form__label">Email</label>
+  <div class="form__field-wrapper">
+    <input
+      type="text"
+      id="email"
+      name="email"
+      [(ngModel)]="model.email"
+      required
+      appEmail
+      #email="ngModel"
+      class="form__input"
+    />
+    <div class="alert" *ngIf="email.errors?.['email']">
+      Please Enter right Email
+    </div>
+  </div>
+
+  <label for="password" class="form__label">Password</label>
+
+  <div class="form__field-wrapper">
+    <input
+      type="text"
+      id="password"
+      name="password"
+      [(ngModel)]="model.password"
+      required
+      #password="ngModel"
+      class="form__input"
+    />
+    <fa-icon icon="eye" class="form__field-icon"></fa-icon>
+    <div class="alert" *ngIf="password.errors?.['required']">
+      Password is required.
+    </div>
+  </div>
+
+  <app-button
+    [type]="'submit'"
+    [text]="'Submit'"
+    class="form__submit"
+  ></app-button>
+</form>
+
+<div class="switch-auth-method">
+  <span class="">If you dont have account you can</span>
+  <a routerLink="/register">Register</a>
+</div>

@@ -1,1 +1,47 @@
-<p>registration works!</p>
+<form [formGroup]="registerForm" class="form form--login">
+  <h2 class="form__heading">register</h2>
+
+  <label for="name" class="form__label">Name: </label>
+  <div class="form__field-wrapper">
+    <input id="name" type="text" formControlName="name" class="form__input" />
+    <div *ngIf="name?.errors?.['required']" class="alert">
+      Name is required.
+    </div>
+    <div *ngIf="name?.errors?.['minlength']" class="alert">
+      Name must be at least 6 characters long.
+    </div>
+  </div>
+  <label for="email" class="form__label">email: </label>
+  <div class="form__field-wrapper">
+    <input id="email" type="text" formControlName="email" class="form__input" />
+    <div *ngIf="email?.errors?.['required']" class="alert">
+      Name is required.
+    </div>
+    <div *ngIf="email?.errors?.['email']" class="alert">
+      Please input correct email
+    </div>
+  </div>
+  <label for="password" class="form__label">password: </label>
+  <div class="form__field-wrapper">
+    <input
+      id="password"
+      type="text"
+      formControlName="password"
+      class="form__input"
+    />
+    <div *ngIf="password?.errors?.['required']" class="alert">
+      password is required.
+    </div>
+  </div>
+
+  <app-button
+    [type]="'submit'"
+    [text]="'Submit'"
+    class="form__submit"
+  ></app-button>
+</form>
+
+<div class="switch-auth-method">
+  <span class="">If you dont have account you can</span>
+  <a routerLink="/login">Login</a>
+</div>

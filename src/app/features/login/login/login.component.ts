@@ -1,15 +1,23 @@
 import { Component, OnInit } from '@angular/core';
+import { ValidationErrors } from '@angular/forms';
+import { LofinFormModel } from 'src/app/models';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
+  model: LofinFormModel = { password: '', email: '' };
+  email!: ValidationErrors;
+  password!: ValidationErrors;
 
-  constructor() { }
+  submitted = false;
 
-  ngOnInit(): void {
+  constructor() {}
+
+  ngOnInit(): void {}
+  onSubmit() {
+    this.submitted = true;
   }
-
 }
